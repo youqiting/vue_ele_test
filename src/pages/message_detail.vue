@@ -20,10 +20,15 @@
           <el-input v-model="item.message_title" clearable></el-input>
         </el-form-item>
         <el-form-item label="内容：">
-          <el-input v-model="item.message_content" clearable></el-input>
+          <el-input
+            type="textarea"
+            :autosize="{ minRows: 2, maxRows: 4}"
+            placeholder="请输入内容"
+            v-model="item.message_content">
+          </el-input>
         </el-form-item>
         <el-form-item label="是否上锁：">
-          <el-switch v-model="item.message_lock"></el-switch>
+          <el-switch v-model="item.message_open"></el-switch>
         </el-form-item>
         <el-form-item>
           <el-button type="primary" @click="postEdit(item)" icon="el-icon-edit">完成</el-button>
@@ -49,7 +54,7 @@ export default {
       detailForm:{
         title:'',
         content:'',
-        lock:false
+        open:false
       },
       display:false
     }
@@ -73,8 +78,8 @@ export default {
         this.messageList = res.data.result;
         this.messageList.forEach((item, index)=>{
            item.message_content = item.message_content.replace( /,/g,",<br/>").replace(/，/g,"<br/>");
-           if(item.message_lock==1) item.message_lock=true;
-           else if(item.message_lock==0) item.message_lock=false;
+           if(item.message_open==1) item.message_open=true;
+           else if(item.message_open==0) item.message_open=false;
            return item;
         })     
       })
@@ -83,23 +88,24 @@ export default {
     //提交修改，弹窗‘修改成功’
     postEdit:function(i){
       var item_ = i;
-      var lock_ ='';
-      if(item_.message_lock){
-       lock_ = 1;
+      var open_ ='';
+      if(item_.message_open){
+       open_ = 1;
        }
       else {
-        lock_ = 0;
+        open_ = 0;
         }
       var params = {
         id: this.detailId,
         title:item_.message_title,
         content:item_.message_content,
-        lock:lock_
+        open:open_
       }
       console.log(params);
       this.$http.post(updateMessage, params).then(res=>{
         if(res.data.code ==1){
             this.$message("修改成功");
+            this.$router.push('/message')
         }
       })
     },
@@ -122,6 +128,7 @@ export default {
               type: 'success',
               message: '删除成功!'
             });
+            this.$router.push('/message');
           }
         })
       }).catch(() => {
@@ -143,6 +150,7 @@ export default {
 }
 .show_detail h5{
     color: rgba(0, 81, 255, 0.555);
+    text-overflow:ellipse；
 }
 .message_edits{
   margin:20px 100px 0 0;

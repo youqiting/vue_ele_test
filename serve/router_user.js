@@ -28,24 +28,27 @@ function router(app){
         })
     })
 
-    //通过用户名查询信息
-    app.post('/selectByName',urlencodeParser,function(req, res){
+    //登录
+    app.post('/login',urlencodeParser,function(req, res){
         var request = req.body;
         console.log(request);
         var sql = "select * from user where name='"+request.name+"'";
-        console.log(sql);
         query(sql, function(err, result){
             if(err) {
                 console.log(err);
             }
-
-            var data = {
+            var state = '';
+            if(result[0].password == request.password){
+                state = "success";
+            }else{
+                state = 'falid'
+            }
+            var result = {
                 code:1,
-                result:result,
+                data: state,
                 msg:""
             }
-            console.log(data);
-            res.send(data);
+            res.send(result);
             res.end();
         })
     })

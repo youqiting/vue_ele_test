@@ -8,7 +8,7 @@ function router(app){
     app.post('/getMessageList',urlencodeParser,function(req, res){
         console.log('getMessageList');
         var request = req.body;
-        var sql = "select * from message where message_lock = " + request.key;
+        var sql = "select * from message where message_open = " + request.key;
         console.log(sql);
         query(sql, function(err, result){
             if(err) {
@@ -51,9 +51,9 @@ function router(app){
     app.post('/addMessage',urlencodeParser,function(req, res){
         var request = req.body;
         console.log(request);
-        var sql = "insert into message(message_title,message_content,message_lock,message_time) values('"
+        var sql = "insert into message(message_title,message_content,message_open,message_time) values('"
                     +request.title+"','"+request.content+"','"
-                    +request.lock+"','"+date.format(new Date(),'YYYY-MM-DD')+"')";
+                    +request.open+"','"+date.format(new Date(),'YYYY-MM-DD')+"')";
         console.log(sql);
         query(sql, function(err, result){
             if(err) {
@@ -77,7 +77,7 @@ function router(app){
         var request = req.body;
         var sql = "update message set message_title = '" +request.title
                     +"',message_content='"+request.content
-                    +"',message_lock='"+request.lock
+                    +"',message_open='"+request.open
                     +"',message_time='"+ date.format(new Date(),'YYYY-MM-DD')+"' where id ='"+request.id+"'";
         console.log(sql);
         query(sql, function(err, result){

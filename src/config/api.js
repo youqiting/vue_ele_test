@@ -11,7 +11,5 @@ module.exports = {
 
     //user
     addUser:baseUrl+'/addUser',
-    selectByName:baseUrl+'/selectByName',
-    // selectByName:baseUrl+'/selectByName',
-    // selectByName:baseUrl+'/selectByName',
+    login: baseUrl + '/login'
 }

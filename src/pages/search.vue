@@ -17,9 +17,9 @@
     </div>
 
     <ul>
-      <li>help_1</li>
-      <li>help_2</li>
-      <li>help_3</li>
+      <li>search_1</li>
+      <li>search_2</li>
+      <li>search_3</li>
     </ul>
 
   </div>
@@ -28,7 +28,7 @@
 <script>
 
 export default {
-  name: 'help',
+  name: 'search',
   components: {
     
   },

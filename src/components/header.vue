@@ -1,27 +1,12 @@
 <template>
   <div class="header_">
-    <!-- 右边小图标 -->
     <div class="icon_">
-      <el-button-group>
-        <el-button type="primary" icon="el-icon-edit" size="mini" @click="login()" round>
-          登录
-        </el-button>
-        <el-button type="primary" size="mini" @click="register()" round>
-          注册
-          <i class="el-icon-circle-plus-outline" ></i>
-        </el-button>
-      </el-button-group>
-      <el-button-group >
-        <el-button type="primary"  size="mini" round>
-          <i class="el-icon-view" ></i>
-        </el-button>
-        <el-button type="primary"  size="mini" round>
-          <i class="el-icon-more" ></i>
-        </el-button>
-        <el-button type="primary"  size="mini" round>
-          <i class="el-icon-share" ></i>
-        </el-button>
-      </el-button-group>
+      <el-button type="text">
+        {{name}}
+      </el-button>
+      <el-button type="primary" size="mini" @click="quit() ">
+        退出
+      </el-button>
     </div>
   </div>
 </template>
@@ -35,21 +20,33 @@ export default {
   },
   data(){
     return{
-
+      name:'',
+      hasLogin:localStorage.getItem('hasLogin')
     }
   },
+   mounted:function(){
+    this.$nextTick(function(){
+      this.getUserName();
+    })
+  },
   methods:{
-    register:function(){
-      this.$router.push({
-        path:'/user_register',
-      })
+    getUserName:function(){
+      this.name = localStorage.getItem('username');
+      console.log(this.name)
     },
+    // 登录
     login:function(){
-      this.$router.push({
-        path:'/user_login',
-      })
+      this.$router.push('/user_login');
+    },
+    //退出
+    quit:function(){
+      localStorage.removeItem('username'); 
+      localStorage.removeItem('hasLogin');
+      this.$router.push('/user_login');
     }
-  }
+    
+  },
+
 }
 </script>
 

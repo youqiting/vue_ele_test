@@ -11,7 +11,7 @@
                 <el-input v-model="form.password" type="password"></el-input>
             </el-form-item>
             <el-form-item label="phone:" prop="phone">
-                <el-input v-model="form.phone">
+                <el-input v-model="form.phone" maxlength="11">
                     <template slot="prepend">86</template>
                 </el-input>
             </el-form-item>
@@ -22,7 +22,7 @@
                 </template>
             </el-form-item>
             <el-form-item>
-                <el-button type='primary' @click="submit(form.name)">提交</el-button>
+                <el-button type='primary' @click="submit(form.name,form.phone)">提交</el-button>
                 <a href="/" style="margin-left:20px;">退出</a>
             </el-form-item>
         </el-form>
@@ -31,7 +31,7 @@
 </template>
 
 <script>
-import {addMessage} from '../config/api.js'
+import {addUser} from '../config/api.js'
 import {selectByName} from '../config/api.js'
 
 export default {
@@ -55,7 +55,7 @@ export default {
       }
   },
   methods:{
-      pulishUser:function(){
+      AddUser:function(){
           var params ={
               name: this.form.name,
               password: this.form.password,
@@ -63,16 +63,22 @@ export default {
               type:this.form.type,
           }
           console.log(params);
-          this.$http.post(addMessage, params).then((res)=>{
+          this.$http.post(addUser, params).then((res)=>{
               console.log(res);
               if(res.data.code ==1){
-                  this.$message("提交成功");
+                  this.$message("注册成功");
+                  this.$router.push({
+                      name:'home',
+                      userName: params.name
+                      })
+                    
               }
           })
       },
-      submit:function(n){
+      submit:function(n,p){
         var params = {
-            name : n
+            name : n ,
+            phone : p
         }
         this.$http.post(selectByName, params).then(res=>{
             console.log(res.data)
@@ -85,9 +91,11 @@ export default {
                      this.$message('用户名存在!! 请修改....');
                 }
             })
-            if(exist == false){
-                console.log('可增');
-                this.pulishUser();
+            if(exist == false && this.form.phone.length >10){
+                console.log('可增' + this.form.phone.length);
+                this.AddUser();
+            }else {
+                 this.$message('请填写正确的手机号码');
             }
         })
       },

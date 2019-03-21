@@ -13,7 +13,12 @@
                 <el-form-item label="password:" prop="password">
                     <el-input v-model="form.password" type="password"></el-input>
                 </el-form-item>
+                <!-- <input type="file" name="img" multiple> //选上传图片 -->
                 <el-form-item>
+                    <el-button style="float: right; margin: 3px 3px" type="text" @click="register()" round>
+                        <small>还没有账号-> </small> 注册
+                        <i class="el-icon-circle-plus-outline" ></i>
+                    </el-button>
                     <el-button style="float: right; margin: 3px 3px" type='primary' @click="login(form.name, form.password)">
                     登录
                     </el-button>
@@ -25,7 +30,6 @@
 </template>
 
 <script>
-import {selectByName} from '../config/api.js'
 
 export default {
   name:'publishMessage',
@@ -42,30 +46,49 @@ export default {
             name:[{required:true, message:'请输入用户名'}],
             password:[{required:true, message:'请输入密码'}],
         },
-        userList:''
+        userList:'',
+        userName:'',
       }
   },
+  created: function(){
+         var hasLogin = localStorage.getItem('hasLogin')
+         if(hasLogin=='1'){
+              this.$router.push('/main')
+         }
+  },
   methods:{
-      login:function(n,p){
+      login:function(name, password){
         var params = {
-            name : n,
-            password: p
+            name: name,
+            password: password
         }
-        this.$http.post(selectByName, params).then(res=>{
+        this.$http.post(this.$api.login, params).then(res=>{
             console.log(res.data)
-            this.userList = res.data.result;
-            this.userList.forEach((item, index)=>{
-                if(item.password == this.form.password)
-                {
-                    this.$message('登录成功');
+            var result = res.data;
+            if(result.code == 1){
+                if(result.data == 'success'){
+                    localStorage.setItem('username', name)
+                    localStorage.setItem('hasLogin', '1')
+                    this.$router.push('/main')
+                }else{
+                   this.$message.error('密码错误');
+                   this.form = {
+                        name:"",
+                        password:"",
+                        phone:"",
+                        type:"user"
+                    }; 
                 }
-            })
-            if(this.userList== ''){
-                this.$message('登录失败');
             }
+        }).catch(err=>{
+             this.$message.error('密码错误');  
         })
       },
-      
+      register:function(){
+      this.$router.push({
+        path:'/user_register',
+      })
+    },
   }
   
 }

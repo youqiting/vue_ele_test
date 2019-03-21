@@ -52,9 +52,10 @@ export default {
   text-align: right;
   margin-right: 100px;
   padding-bottom: 10px;
-  color: aquamarine;
   font-size: 14px;
-  border-bottom: 1px solid #ddd;
+}
+.addMessage a{
+  color: rgb(245, 84, 9);
 }
 
 .message .visit_over{
