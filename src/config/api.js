@@ -8,6 +8,7 @@ module.exports = {
     addMessage:baseUrl+'/addMessage',
     updateMessage:baseUrl+'/updateMessage',
     deleteMessage:baseUrl+'/deleteMessage',
+    MessageSort:baseUrl+'/MessageSort',
 
     //user
     addUser:baseUrl+'/addUser',

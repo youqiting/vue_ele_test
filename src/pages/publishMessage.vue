@@ -3,14 +3,15 @@
   <div id="publishMessage">
     <div>
         <el-form :model="form" label-width="50px;" :rules="rules" ref='form'>
-            <el-form-item label="message_title:" prop="message_title">
-                <el-input v-model="form.message_title"></el-input>
+            <el-form-item label="message_title:" prop="title">
+                <el-input v-model="form.title"></el-input>
             </el-form-item>
-            <el-form-item label="message_content:" prop="message_content">
-                <el-input v-model="form.message_content"></el-input>
+            <el-form-item label="message_content:" prop="content">
+                <el-input type="textarea"  :autosize="{ minRows: 2, maxRows: 4}" v-model="form.content"></el-input>
             </el-form-item>
-            <el-form-item label="lock:">
-                <el-switch v-model="form.message_lock"></el-switch>
+            <el-form-item>
+                <el-radio v-model="form.open" label="open">open</el-radio>
+                <el-radio v-model="form.open" label="private">private</el-radio>
             </el-form-item>
             <el-form-item >
                 <el-button type='primary' @click="pulishMes()">发布文章</el-button>
@@ -22,36 +23,44 @@
 </template>
 
 <script>
-import {addUser} from '../config/api.js'
 
 export default {
   name:'publishMessage',
   data(){
       return{
         form:{
-            message_title:"",
-            message_content:"",
-            message_lock:false
+            title:"",
+            content:"",
+            open:"open"
         },
         rules:{
-            message_title:[{required:true, message:'请输入标题'}],
-            message_content:[{required:true, message:'请输入内容'}]
+            title:[{required:true, message:'请输入标题'}],
+            content:[{required:true, message:'请输入内容'}],
+            open:[{required:false, message:'private'}]
         }
       }
   },
   methods:{
       pulishMes:function(){
-          var params ={
-              title: this.form.message_title,
-              content: this.form.message_content,
-              lock: this.form.message_lock,
-          }
-          this.$http.post(addMessage, params).then((res)=>{
-              console.log(params);
-              if(res.data.code ==1){
-                  this.$message("提交成功");
-              }
-          })
+            var message_open = '';
+            if(this.form.open == 'open') {
+                message_open= '1';
+            }
+            else if(this.form.open == 'private') {
+                message_open='0';
+            }
+            var params ={
+                title: this.form.title,
+                content: this.form.content,
+                open: message_open,
+            }
+            this.$http.post(this.$api.addMessage, params).then((res)=>{
+                console.log(params);
+                if(res.data.code ==1){
+                    this.$message("提交成功");
+                    this.$router.go(-1);
+                }
+            })
       }
       
   }

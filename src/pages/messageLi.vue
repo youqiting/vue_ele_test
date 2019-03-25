@@ -43,7 +43,7 @@ export default {
               type: 'success',
               message: '删除成功!'
             });
-            this.$router.push('/message');
+            window.location.reload();
           }
         })
       }).catch(() => {

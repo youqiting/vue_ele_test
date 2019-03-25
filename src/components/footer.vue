@@ -3,7 +3,7 @@
     <div class="my_mag">
       <div>
         <el-button type="text" icon="el-icon-message">
-          my e-mail:601195318
+          my e-mail:601195318@qq.com
         </el-button>
       </div>
       <div>
