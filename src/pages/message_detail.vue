@@ -66,9 +66,6 @@ export default {
     })
   },
   methods:{
-    deletewarning:function(){
-      
-    },
     //从id取得文章
     getMessageById:function(){
       var parmas = {

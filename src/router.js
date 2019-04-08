@@ -11,7 +11,8 @@ import message_open from './pages/message_open.vue'
 import message_detail from './pages/message_detail.vue'
 import publishMessage from './pages/publishMessage.vue'
 
-import search from './pages/search.vue'
+import js_test from './pages/js_test.vue'
+import css3_test from './pages/css3_test.vue'
 import about from './pages/about.vue'
 
 Vue.use(Router);
@@ -24,7 +25,6 @@ export default new Router({
         {
             path:'/main',
             component: main,
-            name: 'main',
             children: [
                 {path:'', name: 'message' , component: message},
                 //user
@@ -36,7 +36,8 @@ export default new Router({
                 {path:'/message_detail', component: message_detail},
                 {path:'/publishMessage', component: publishMessage},
         
-                {path:'/search', component: search},
+                {path:'/js_test', component: js_test},
+                {path:'/css3_test', component: css3_test},
                 {path:'/about', component: about}
              ]
         },

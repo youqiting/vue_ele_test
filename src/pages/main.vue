@@ -65,7 +65,7 @@ export default {
     color: #2c3e50;
 }
 .el-main{
-  height: 500px;
+  height: auto;
   margin-bottom: 50px;
 }
 
