@@ -4,11 +4,32 @@ var urlencodeParser = bodyparser({extended:false});
 var date = require("silly-datetime");
 
 function router(app){
-    //默认显示所有 未上锁 的文章
+    //默认显示所有 公开 的文章
     app.post('/getMessageList',urlencodeParser,function(req, res){
         console.log('getMessageList');
         var request = req.body;
-        var sql = "select * from message where message_open = " + request.key;
+        var sql = "select * from message where message_open = " + request.open;
+        console.log(sql);
+        query(sql, function(err, result){
+            if(err) {
+                console.log(err);
+            }
+            console.log(result);
+            var data = {
+                code:1,
+                result:result,
+                msg:""
+            }
+            res.send(data);
+            res.end();
+        })
+    })
+
+    //对文章排序 SELECT * FROM `message` WHERE `message_open` = true order by `message_time` asc
+    app.post('/MessageSort',urlencodeParser,function(req, res){
+        console.log('MessageSort');
+        var request = req.body;
+        var sql = "select * from message where message_open = " + request.open +" order by message_time " + request.sort;
         console.log(sql);
         query(sql, function(err, result){
             if(err) {
@@ -47,7 +68,7 @@ function router(app){
         })
     })
 
-    //添加文章 标题、内容、锁、时间
+    //添加文章 标题、内容、是否公开、时间
     app.post('/addMessage',urlencodeParser,function(req, res){
         var request = req.body;
         console.log(request);

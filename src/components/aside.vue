@@ -6,6 +6,7 @@
       <router-link :to="'/main'"  class="unline aside_home">
       首页
       <i class="el-icon-menu"></i>
+      <!-- <img :src="this.icons.menu"/> -->
       </router-link>
     </div>
     
@@ -28,10 +29,16 @@
       <el-menu-item index="3" >
         <template slot="title">
           <i class="el-icon-search"></i>
-          <router-link :to="'/news'" class="unline">搜索</router-link>
+          <router-link :to="'/js_test'" class="unline">js练习</router-link>
         </template>
       </el-menu-item>
       <el-menu-item index="4" >
+        <template slot="title">
+          <i class="el-icon-search"></i>
+          <router-link :to="'/css3_test'" class="unline">css3练习</router-link>
+        </template>
+      </el-menu-item>
+      <el-menu-item index="5" >
         <template slot="title">
           <i class="el-icon-info"></i>
           <router-link :to="'/about'" class="unline">关于</router-link>
@@ -52,10 +59,6 @@ export default {
       icons: icons
     }
   },
-  methods:{
-    
-  }
-
 }
 </script>
 
