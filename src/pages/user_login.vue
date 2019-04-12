@@ -40,7 +40,7 @@
 <script>
 
 export default {
-  name:'publishMessage',
+  name:'user_login',
   data(){
       return{
         screenWidth: document.body.clientWidth, // 屏幕尺寸
@@ -48,8 +48,6 @@ export default {
         form:{
             name:"",
             password:"",
-            phone:"",
-            type:"user"
         },
         rules:{
             name:[{required:true, message:'请输入用户名'}],
@@ -157,7 +155,7 @@ export default {
     background: #fff;
     background-image: url("../imgs/user_login.jpg");
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: cover;          /* 拉伸 */
     background-position: bottom;
 }
 .box{
