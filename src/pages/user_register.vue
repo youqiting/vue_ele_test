@@ -1,6 +1,6 @@
-// publishMessage页面
+// user_register页面
 <template>
-  <div id="publishMessage">
+  <div id="user_register">
     <div>
         <h4>注册</h4>
         <el-form :model="form" label-width="50px;" :rules="rules" ref='form'>
@@ -35,7 +35,7 @@ import {addUser} from '../config/api.js'
 import {selectByName} from '../config/api.js'
 
 export default {
-  name:'publishMessage',
+  name:'user_register',
   data(){
       return{
         label:"user",
