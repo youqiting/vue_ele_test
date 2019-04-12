@@ -121,7 +121,7 @@ function router(app){
     app.post('/deleteMessage',urlencodeParser,function(req, res){
         console.log('deleteMessage');
         var request = req.body;
-        var sql = "delete from message " + "where id='" + request.id+"'";
+        var sql = "delete from message where id='" + request.id+"'";
         console.log(sql);
         query(sql, function(err, result){
             if(err) {
