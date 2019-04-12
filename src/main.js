@@ -14,7 +14,6 @@ Vue.use(ElementUI);
 Vue.prototype.$http = axios;
 Vue.prototype.$api = api;
 
-
 new Vue({
   router,
   axios,
