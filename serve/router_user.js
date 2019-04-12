@@ -1,5 +1,5 @@
 var query = require('./mysql.js');
-var bodyparser = require('body-parser');
+var bodyparser = require('body-parser');     //node.js中间件，用于处理JSON,Eaw,Text和URL编码的数据
 var urlencodeParser = bodyparser({extended:false});
 var date = require("silly-datetime");
 
