@@ -10,6 +10,7 @@ export default {
       window.onreSize =()=>{
           return (()=>{
             //   console.log("document.body.clientWidth:"+document.body.clientWidth+"; window.screenWidth:" +window.screenWidth);ss
+              //拖动可以放大缩小视图框
               window.screenWidth = document.body.clientWidth;
               this_.screenWidth = window.screenWidth;
           })()
