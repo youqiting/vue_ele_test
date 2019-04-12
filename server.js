@@ -4,11 +4,11 @@ let app = express();
 let cors = require('cors');
 
 let router = require('./serve/router.js');    //router.js文件
-let router_user = require('./serve/router_user');    //router_user.js文件
+let router_user = require('./serve/router_user.js');    //router_user.js文件
 
 app.use(cors({
     credentials:true,
-    origin:'http://localhost:8080'
+    origin:'http://localhost:8080'              //cors跨域异常
 }));
 
 app.use(express.static(__dirname));
