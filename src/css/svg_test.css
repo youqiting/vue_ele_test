@@ -1,0 +1,52 @@
+.juxing_wrap{
+    display: flex;
+    justify-content: space-around;
+    background: rgba(1, 1, 248, 0.411);
+    text-align: center;
+    height: 230px;
+}
+.juxing_box{
+    background: #fff;    
+    color: #333;
+    flex: 1;
+    transition: all 1s ease-in-out;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.compangPic{
+    margin: 10px 0;
+}
+.juxing_active{
+    align-items: stretch;
+    color: rgb(0, 0, 0);
+    margin:0 30px;
+}
+.juxing_noactive{
+    align-items: center;
+    margin: 30px;
+}
+.companyName{font-size: 18px;}
+.companyDesc{
+    animation:mymove 0.6s ;
+	/*Safari 和 Chrome:*/
+    -webkit-animation:mymove 0.6s ;
+    margin: 10px 0 0 0;
+    font-size: 14px;
+}
+
+@keyframes mymove
+	{
+	from {display: none;color: #fff;}
+	to {display: block;color: rgba(13, 37, 170, 0.39);}
+}
+
+/*Safari 和 Chrome:*/
+@-webkit-keyframes mymove
+{
+	from {display: none;color: #fff;}
+	to {display: block;color: rgba(13, 37, 170, 0.39);;}
+}
+
+

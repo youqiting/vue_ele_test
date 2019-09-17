@@ -38,6 +38,12 @@
           <router-link :to="'/css3_test'" class="unline">css3练习</router-link>
         </template>
       </el-menu-item>
+      <el-menu-item index="4" >
+        <template slot="title">
+          <i class="el-icon-search"></i>
+          <router-link :to="'/svg_test'" class="unline">svg练习</router-link>
+        </template>
+      </el-menu-item>
       <el-menu-item index="5" >
         <template slot="title">
           <i class="el-icon-info"></i>

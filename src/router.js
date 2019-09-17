@@ -27,6 +27,7 @@ export default new Router({
         
                 {path:'/js_test', component: () => import('./pages/js_test.vue')},
                 {path:'/css3_test', component: () => import('./pages/css3_test.vue')},
+                {path:'/svg_test', component: () => import('./pages/svg_test.vue')},
                 {path:'/about', component: () => import('./pages/about.vue')}
              ]
         },
