@@ -78,7 +78,7 @@ export default {
            if(item.message_open==1) item.message_open=true;
            else if(item.message_open==0) item.message_open=false;
            return item;
-        })     
+        });     
       })
     },
 

@@ -126,11 +126,18 @@ export default {
                     document.getElementById('nav_'+index).className = document.getElementById('nav_'+index).className.replace(/\s*nav_choose\s*/g,'');
                 }else{
                     //选中的
-                    document.getElementById('card_'+index_).className = document.getElementById('card_'+index_).className.trim().replace('',' card_center ');
                     document.getElementById('card_'+index_).style.left = '';
                     document.getElementById('card_'+index_).style.top = '';
                     document.getElementById('card_'+index_).style['transform'] = '';
                     document.getElementById('nav_'+index_).className = document.getElementById('nav_'+index_).className.replace('',' nav_choose ');
+                    if(document.getElementById('card_'+index_).className.indexOf("card_center")<0){
+                        document.getElementById('card_'+index_).className = 
+                        document.getElementById('card_'+index_).className.trim().replace('',' card_center ');
+                    }
+                    if(document.getElementById('nav_'+index_).className.indexOf("nav_choose")<0){
+                        document.getElementById('nav_'+index_).className = 
+                        document.getElementById('nav_'+index_).className.trim().replace('',' nav_choose ');
+                    }
                 }
             })
 
@@ -147,15 +154,19 @@ export default {
             }
             for(var s in card_right){
                 //右边卡片随机位置值
+                var card_rightID = document.getElementById('card_' + card_right[s]);
+                card_rightID.style.left = this.random(space_random.right.x) + 'px';
+                card_rightID.style.top = this.random(space_random.right.y) + 'px';
+                card_rightID.style['transform'] = 'rotate(' + this.random([-90,90]) + 'deg) scale(1)';
             }
         },
 
         // 选中的卡片
         card_choose:function(index){
-            var card_index = document.getElementById('card_'+index);
-            var card_chooseIndex = document.getElementById('card_'+this.chooseIndex);
+            var card_index = document.getElementById('card_'+index);     //现选卡片
+            var card_chooseIndex = document.getElementById('card_'+this.chooseIndex); //上一张卡片
             var nav_index = document.getElementById('nav_'+index);
-            var nav_chooseIndex = document.getElementById('nav_'+this.chooseIndex);
+            // var nav_chooseIndex = document.getElementById('nav_'+this.chooseIndex);
             if(this.chooseIndex == index){
                 //正反面切换、翻转
                 if( card_index.className.indexOf('card_back') <0){
@@ -180,7 +191,7 @@ export default {
         // nav 选中的圆点
         nav_choose:function(index){
             var nav_index = document.getElementById('nav_'+index);
-            var nav_chooseIndex = document.getElementById('nav_'+this.chooseIndex);
+            // var nav_chooseIndex = document.getElementById('nav_'+this.chooseIndex);
             if(this.chooseIndex == index ){
                 if(nav_index.className.indexOf('nav_back') < 0 ){
                     nav_index.className = nav_index.className.replace('',' nav_back');

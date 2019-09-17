@@ -56,6 +56,10 @@ export default {
 </script>
 
 <style>
+.footer_{
+      position: relative;
+    bottom: 0;
+}
 #app{
     margin: 0;
     padding: 0;

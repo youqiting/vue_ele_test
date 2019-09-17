@@ -7,17 +7,18 @@
               v-model="accountSearch"
               :fetch-suggestions="accounQuerySearchAsync"
               @select="accountHandleSelect"
+              @blur="accountBlur"
               :debounce=10
               prefix-icon="el-icon-search"
               placeholder="请输入搜索内容">
         </el-autocomplete>
-        <el-button type="primary"
+        <!-- <el-button type="primary"
             @click="accountFind"
             style="margin-left:10px;"
             size="small">
           搜索
           <i class="el-icon-search"></i>
-        </el-button>
+        </el-button> -->
     </div>
     
     <!--输入框:字符串、数组转换 -->
@@ -150,7 +151,14 @@ export default {
       // 模糊查询下拉框 鼠标键盘选中点击触发
     accountHandleSelect(item) { 
         this.accountSearch = item.value;
-    },     
+        console.log(item);
+        // this.getAccountUserInfo(param,1);
+    }, 
+    accountBlur(e) { 
+        // this.accountSearch = item.value;
+        console.log(e);
+        // this.getAccountUserInfo(param,1);
+    },    
     accountFind: function(){
         if(!this.accountSearch){
             this.$message({ type: 'warning', message: "请输入要查询的内容！"});
@@ -160,8 +168,7 @@ export default {
               pageNum: 1,
               pageSize: this.accountPagesize,
               key: this.accountSearch
-          }
-          this.getAccountUserInfo(param,1);
+          }          
       },
       getAccountUserInfo: function(param,status){
           findUsersAndDepartment(param).then((data) => {
@@ -246,7 +253,7 @@ export default {
       alert(userName_);
     },
     
-    //字符串、数组转换 测试
+    //字符串、数组转换 
     stringArr_change:function(){
       var book = {
         title: "music",
@@ -287,7 +294,7 @@ export default {
   width: 80%;
 }
 .el-input{
-  width: 130px;
+  width: 430px;
   margin: 5px 0;
 }
 .el-textarea__inner{

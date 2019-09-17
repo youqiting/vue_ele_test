@@ -69,5 +69,7 @@ export default {
 </script>
 
 <style>
-
+#publishMessage{
+    width: 80%;
+}
 </style>

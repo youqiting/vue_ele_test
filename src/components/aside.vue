@@ -2,13 +2,13 @@
 
 <template>
   <div class="aside_">
-    <div>
+    <!-- <div>
       <router-link :to="'/main'"  class="unline aside_home">
       首页
       <i class="el-icon-menu"></i>
-      <!-- <img :src="this.icons.menu"/> -->
+       <img :src="this.icons.menu"/>
       </router-link>
-    </div>
+    </div>-->
     
     <!-- 导航菜单 -->
     <el-menu 

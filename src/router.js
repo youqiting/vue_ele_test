@@ -3,42 +3,31 @@ import Router from 'vue-router'
 
 import main from './pages/main.vue'
 
-import user_register from './pages/user_register.vue'
-import user_login from './pages/user_login.vue'
-
-import message from './pages/message.vue'
-import message_open from './pages/message_open.vue'
-import message_detail from './pages/message_detail.vue'
-import publishMessage from './pages/publishMessage.vue'
-
-import js_test from './pages/js_test.vue'
-import css3_test from './pages/css3_test.vue'
-import about from './pages/about.vue'
 
 Vue.use(Router);
 
 export default new Router({
     mode:'history',
     routes:[
-        {path:'/',component: user_login},
-        {path:'/user_login',component: user_login},
+        {path:'/',component: () => import('./pages/user_login.vue') },
+        {path:'/user_login',component:  () => import('./pages/user_login.vue')},
         {
             path:'/main',
             component: main,
             children: [
-                {path:'', name: 'message' , component: message},
+                {path:'', name: 'message' , component:  () => import('./pages/message.vue')},
                 //user
-                {path:'/user_register', component: user_register},
+                {path:'/user_register', component: () => import('./pages/user_register.vue')},
         
                 // message
-                {path:'/message', component: message},
-                {path:'/message_open', component: message_open},
-                {path:'/message_detail', component: message_detail},
-                {path:'/publishMessage', component: publishMessage},
+                {path:'/message', component: () => import('./pages/message.vue')},
+                {path:'/message_open', component: () => import('./pages/message_open.vue')},
+                {path:'/message_detail', component: () => import('./pages/message_detail.vue')},
+                {path:'/publishMessage', component: () => import('./pages/publishMessage.vue')},
         
-                {path:'/js_test', component: js_test},
-                {path:'/css3_test', component: css3_test},
-                {path:'/about', component: about}
+                {path:'/js_test', component: () => import('./pages/js_test.vue')},
+                {path:'/css3_test', component: () => import('./pages/css3_test.vue')},
+                {path:'/about', component: () => import('./pages/about.vue')}
              ]
         },
         
