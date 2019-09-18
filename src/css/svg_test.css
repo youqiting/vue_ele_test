@@ -16,8 +16,7 @@
     justify-content: center;
 }
 .compangPic{
-    margin: 10px auto;
-    
+    margin: 10px auto;    
 }
 .compangPic > div{transition: width 0.8s ease-in-out;}
 .compangPic_img{
