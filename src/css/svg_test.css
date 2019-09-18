@@ -7,7 +7,6 @@
 }
 .juxing_box{
     background: #fff;    
-    color: #333;
     flex: 1;
     transition: all 1s ease-in-out;
     padding: 10px;
@@ -16,37 +15,49 @@
     justify-content: center;
 }
 .compangPic{
-    margin: 10px 0;
+    margin: 10px auto;
+    
 }
-.juxing_active{
-    align-items: stretch;
-    color: rgb(0, 0, 0);
-    margin:0 30px;
+.compangPic > div{transition: width 1s ease-in-out;}
+.compangPic_img{
+    width: 32px;
+}
+.imgchoose{
+    width: 37px;
+}
+.compangPic_img img,.imgchoose img{
+    width: 100%;height: 100%;
 }
 .juxing_noactive{
     align-items: center;
     margin: 30px;
 }
-.companyName{font-size: 18px;}
+
+.juxing_active{
+    align-items: stretch;
+    margin:0 30px;
+}
+.companyName{font-size: 18px;color: rgb(0, 0, 0);}
 .companyDesc{
-    animation:mymove 0.6s ;
+    animation:mymove 1s normal ;
 	/*Safari 和 Chrome:*/
-    -webkit-animation:mymove 0.6s ;
+    -webkit-animation:mymove 1s  normal;
     margin: 10px 0 0 0;
     font-size: 14px;
+    color: rgb(0, 119, 255);
 }
 
 @keyframes mymove
 	{
 	from {display: none;color: #fff;}
-	to {display: block;color: rgba(13, 37, 170, 0.39);}
+	to {display: block;color: rgb(0, 119, 255);}
 }
 
 /*Safari 和 Chrome:*/
 @-webkit-keyframes mymove
 {
 	from {display: none;color: #fff;}
-	to {display: block;color: rgba(13, 37, 170, 0.39);;}
+	to {display: block;color: rgb(0, 119, 255);}
 }
 
 

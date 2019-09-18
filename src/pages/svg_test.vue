@@ -4,12 +4,14 @@
             <div>
                 <h3>矩形块 hover填满动画</h3>
             </div>
-            <div class="juxing_wrap" @mouseout="outStyle()">
+            <div class="juxing_wrap" >
                 <div class="juxing_box"
-                     @mouseover="selectStyle(i)" 
+                     @mousemove="selectStyle(i)"  @mouseleave="outStyle()"
                     :class="{'juxing_active': i==juxing_active,'juxing_noactive': i!=juxing_active}" 
                     v-for="(item,i) in juxing_c" :key="i"> 
-                    <div class="compangPic"><img :src="item.img" ></div>
+                    <div class="compangPic">
+                        <div :class="{'imgchoose': i==juxing_active,'compangPic_img': i!=juxing_active}"><img :src="item.img" ></div>
+                    </div>
                     <div class="companyName">
                         {{item.companyName}} &nbsp;&nbsp;  {{i}} {{i}}
                     </div>
@@ -41,14 +43,15 @@ export default {
     },
     methods:{
         selectStyle(i){
-            if(i != this.juxing_active)
-            this.juxing_active = i;
-            console.log("selectStyle")
+            if(i != this.juxing_active){
+                this.juxing_active = i;
+                console.log("selectStyle")
+            }
         },
         outStyle(){
             console.log("outStyle")
             this.juxing_active = -1;
-        }
+        },
     }
 }
 </script>
