@@ -1,5 +1,6 @@
 <template>
     <div>
+        <!-- 鼠标悬浮时 动画 -->
         <div class="">
             <div>
                 <h3>矩形块 hover填满动画</h3>
@@ -22,6 +23,8 @@
             </div>
         </div>
 
+        <!-- 动画 圆形描边 -->
+        
     </div>
 
 </template>
