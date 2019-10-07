@@ -15,10 +15,13 @@ app.use(express.static(__dirname));
 router(app);
 router_user(app);
 
-var developState = "/public";      //开发时是"/public", 打包后用"/build"
+var developState = "/dist";      //开发时是"/public", 打包后用"/build"
+// var developState = "/public";      //开发时是"/public", 打包后用"/build"
+
 
 // 所有的请求都回到index页面
 app.get('/',function(req, res){
+    console.log('get/')
     res.sendFile(__dirname+developState+'/index.html');
 });
 

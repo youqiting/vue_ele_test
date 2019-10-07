@@ -225,7 +225,7 @@ export default {
 
     // 字符串每个的数量，数量最多的字符
     countInString:function(){
-      var strArr = [];
+      var strArr = {};
       var str = this.input4;
       for(var i= 0; i<str.length; i++){
         if(!strArr[str.charAt(i)]){
@@ -234,6 +234,7 @@ export default {
           strArr[str.charAt(i)] ++;
         }
       }
+      console.log(strArr);
       var maxNumStr = '';
       var maxNum = 0;
       document.getElementById("content_countInString").innerHTML = "<strong>您输入的是:" + this.input4 +"</strong></br>";

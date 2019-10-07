@@ -22,6 +22,7 @@
                 </div>
             </div>
         </div>
+        
 
         <!-- 动画 圆形描边 -->
         
@@ -48,11 +49,11 @@ export default {
         selectStyle(i){
             if(i != this.juxing_active){
                 this.juxing_active = i;
-                console.log("selectStyle")
+                // console.log("selectStyle")
             }
         },
         outStyle(){
-            console.log("outStyle")
+            // console.log("outStyle")
             this.juxing_active = -1;
         },
     }
