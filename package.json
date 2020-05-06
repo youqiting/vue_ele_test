@@ -13,6 +13,7 @@
     "cors": "^2.8.5",
     "element-ui": "^2.5.4",
     "express": "^4.16.4",
+    "mockjs": "^1.1.0",
     "mysql": "^2.16.0",
     "silly-datetime": "^0.1.2",
     "vue": "^2.6.6",

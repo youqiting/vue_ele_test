@@ -57,13 +57,27 @@ export default {
   methods:{
     //获取（公开的）文章
     getMessages:function(){
-      this.value ='';
       var params = {
         open : true
       }
-      this.$http.post(getMessageList,params).then((res)=>{
-        this.messageList = res.data.result;
-      })
+      const loading = this.$loading({
+        lock: true,
+        text: 'Loading',
+        spinner: 'el-icon-loading',
+        background: 'rgba(0, 0, 0, 0.7)'
+      });
+      this.$http.post(this.$api.getMessageList,params).then(res=>{
+        loading.close();
+        console.log(res.data)
+        if(res.data.sta == "00"){
+          this.messageList = res.data.result;
+        }else{
+          this.$message.error('获取文章内容失败');
+        }
+      }).catch(err=>{
+          console.log(err);
+          this.$message.error('请求异常');
+        })
     },
     //时间排序
     sortByTime:function(){

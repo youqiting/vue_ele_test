@@ -18,7 +18,7 @@
                     <div class="inline generatedCode">{{this.generatedCode}}</div>
                     <div class="inline">
                         <el-button type="text" @click="generated_Code()" round>
-                            <small>刷新</small> 
+                            <small>刷新</small>
                         </el-button>
                     </div>
                 </el-form-item>
@@ -81,14 +81,14 @@ export default {
             code += random_[index];
         }
         this.generatedCode = code;
-        console.log("code:" + code);
+        // console.log("code:" + code);
       },
 
       //验证
       check:function(name, password ,generated){
         this.loginTime ++;
-        console.log(this.loginTime);
-        console.log(document.getElementById('generated').className);
+        // console.log(this.loginTime);
+        // console.log(document.getElementById('generated').className);
         if(this.loginTime > 2){
             if(this.loginTime == 3){
                 document.getElementById('generated').className = document.getElementById('generated').className.replace('display','');
@@ -96,7 +96,7 @@ export default {
             if(generated == ''){
                 this.$message.error('请输入验证码');
             }else if(generated != this.generatedCode){
-                this.$message.error('验证码错误'); 
+                this.$message.error('验证码错误');
                 this.generated_Code();
             }else if(generated == this.generatedCode){
                 this.login(name, password);
@@ -104,16 +104,23 @@ export default {
         }else if( this.loginTime <= 2){
             this.login(name, password);
         }
-        
+
       },
 
       //登录
       login:function(name, password){
+          const loading = this.$loading({
+                lock: true,
+                text: 'Loading',
+                spinner: 'el-icon-loading',
+                background: 'rgba(0, 0, 0, 0.7)'
+            });
         var params = {
             name: name,
             password: password
         }
         this.$http.post(this.$api.login, params).then(res=>{
+            loading.close();
             console.log(res.data);
             var result = res.data;
             if(result.code == 1){
@@ -142,7 +149,7 @@ export default {
       })
     },
   }
-  
+
 }
 </script>
 
@@ -182,12 +189,12 @@ export default {
     background: rgba(204, 204, 204, 0.493);
 }
 .register{
-    float: right; 
-    margin: 3px 3px; 
+    float: right;
+    margin: 3px 3px;
     color:black;
 }
 .login{
-    float: right; 
+    float: right;
     margin: 3px 3px;
 }
 .display{

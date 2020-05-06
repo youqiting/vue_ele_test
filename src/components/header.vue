@@ -32,7 +32,7 @@ export default {
   methods:{
     getUserName:function(){
       this.name = localStorage.getItem('username');
-      console.log(this.name)
+      // console.log(this.name)
     },
     // 登录
     login:function(){

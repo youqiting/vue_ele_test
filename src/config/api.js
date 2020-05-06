@@ -3,6 +3,10 @@
 const baseUrl = 'http://39.108.182.97:8081';
 
 export default { 
+    //user
+    addUser:baseUrl+'/addUser',
+    login: baseUrl + '/login',
+    
     // message
     getMessageList: baseUrl+ '/getMessageList',
     getMessageListById: baseUrl+ '/getMessageListById',
@@ -11,7 +15,4 @@ export default {
     deleteMessage:baseUrl+'/deleteMessage',
     MessageSort:baseUrl+'/MessageSort',
 
-    //user
-    addUser:baseUrl+'/addUser',
-    login: baseUrl + '/login'
 }
