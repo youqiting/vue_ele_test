@@ -7,6 +7,12 @@ npm run serve
 
 项目使用的所有模块：
 axios  body-parser  cors  element-ui express mysql silly-datetime vue vue-router
+body-parser:node.js body 解析中间件,处理程序之前，在中间件中对传入的请求体进行解析（response body）
+    body-parser 提供四种解析器
+        JSON body parser
+        Raw body parser
+        Text body parser
+        URL-encoded form body parser
 
 『用户模块』
     用户登陆
