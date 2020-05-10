@@ -20,7 +20,7 @@
           <i class="el-icon-search"></i>
         </el-button> -->
     </div>
-    
+
     <!--输入框:字符串、数组转换 -->
     <div>
       <div>字符串转换成数组</div>
@@ -35,12 +35,12 @@
         <span v-if="index < testArr.length-1">,&nbsp;&nbsp;</span>
       </div>
     </div>
-    
+
      <!--test 字符串去重 -->
     <div>
       <div>字符串去重</div>
       <el-input type="textarea" v-model="input3" placeholder="请输入多个字符串，用回车隔开" rows="2">
-      </el-input>  
+      </el-input>
       <el-button  icon="el-icon-check" @click="removeDuplication()">
         提交
       </el-button>
@@ -117,12 +117,12 @@ export default {
       countArr: [],
       pic_index : 0,
       egg_pictures:[
-          {egg_pic:require("../imgs/egg_1.png")},
-          {egg_pic:require("../imgs/egg_2.png")}
+          {egg_pic:require("../../imgs/egg_1.png")},
+          {egg_pic:require("../../imgs/egg_2.png")}
       ],
       eggFlash_pictures:[
-          {egg_pic:require("../imgs/egg_1.png")},
-          {egg_pic:require("../imgs/egg_2.png")}
+          {egg_pic:require("../../imgs/egg_1.png")},
+          {egg_pic:require("../../imgs/egg_2.png")}
       ],
     }
   },
@@ -134,14 +134,14 @@ export default {
           pageNum: 1,
           pageSize: 9999,
           key: queryString
-        }      
+        }
         let data = ["Alabama","Alaska","Arizona","QQa","电饭锅的a广泛地","43543我a们是蛋糕",,
-                    "wthdfbfgjtaytyut","是的sdfdfgdgdfgerauaiol","宿舍a的发v","哦们是对方a水电费                    是","脂肪s酸该公司","是的个人特a色的若干",];     
+                    "wthdfbfgjtaytyut","是的sdfdfgdgdfgerauaiol","宿舍a的发v","哦们是对方a水电费                    是","脂肪s酸该公司","是的个人特a色的若干",];
         //      let data = this.getAccountUserInfo(param,0);
         data.forEach(function(item,i){
           if(item.indexOf(queryString) != -1){
-                list.push({"value":item});   
-          }      
+                list.push({"value":item});
+          }
         })
         if(!queryString){
           list = list.splice(0,7);
@@ -149,16 +149,16 @@ export default {
         callback(list);
     },
       // 模糊查询下拉框 鼠标键盘选中点击触发
-    accountHandleSelect(item) { 
+    accountHandleSelect(item) {
         this.accountSearch = item.value;
         console.log(item);
         // this.getAccountUserInfo(param,1);
-    }, 
-    accountBlur(e) { 
+    },
+    accountBlur(e) {
         // this.accountSearch = item.value;
         console.log(e);
         // this.getAccountUserInfo(param,1);
-    },    
+    },
     accountFind: function(){
         if(!this.accountSearch){
             this.$message({ type: 'warning', message: "请输入要查询的内容！"});
@@ -168,7 +168,7 @@ export default {
               pageNum: 1,
               pageSize: this.accountPagesize,
               key: this.accountSearch
-          }          
+          }
       },
       getAccountUserInfo: function(param,status){
           findUsersAndDepartment(param).then((data) => {
@@ -182,9 +182,9 @@ export default {
                         });
                             this.accountList = data.page.list;
                   }
-              }      
+              }
           })
-  
+
     },
 
     //字符串转换成数组
@@ -253,8 +253,8 @@ export default {
       var userName_ = document.getElementById("userName").value;
       alert(userName_);
     },
-    
-    //字符串、数组转换 
+
+    //字符串、数组转换
     stringArr_change:function(){
       var book = {
         title: "music",
@@ -273,7 +273,7 @@ export default {
         this.pic_index ++;
         this.pic_index = this.pic_index%2;
     },
-    //翻鸡蛋——flash 
+    //翻鸡蛋——flash
     turnEgg_flash:function(){
         var egg_ = document.getElementById('egg_flash').className;
         if(egg_.indexOf('egg_back') < 0){
@@ -318,12 +318,12 @@ export default {
     width: 90%;
     height: auto;
     background: rgba(204, 204, 204, 0.192);
-    cursor:url(../imgs/slice.png),pointer;
+    cursor:url(../../imgs/slice.png),pointer;
     display: flex;
     justify-content: space-around;
 
     transform-style: preserve-3d;
-    
+
 }
 .pan > div{
     display: inline-block;

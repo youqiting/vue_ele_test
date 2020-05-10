@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import App from './App.vue'
-import router from './router.js'
+import router from './router/router.js'
 import axios from 'axios'
 import ElementUI from 'element-ui'
 import api from './config/api.js'
@@ -18,6 +18,7 @@ Vue.prototype.$http = axios;
 Vue.prototype.$api = api;
 Vue.prototype.commonservices = commonservices;
 
+console.log(router);
 new Vue({
   router,
   axios,

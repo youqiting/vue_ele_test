@@ -2,7 +2,7 @@
 <template>
   <div>
     <!-- 上部分：展示方式 -->
-    <div class="message_header"> 
+    <div class="message_header">
       <el-button-group>
         <el-button type="text"  @click="getMessages()">
           默认展示
@@ -13,7 +13,7 @@
         </el-select>
       </el-button-group>
       <div class="addMessage">
-        <router-link to="/publishMessage"  class="unline">发布文章</router-link> 
+        <router-link to="/publishMessage"  class="unline">发布文章</router-link>
       </div>
     </div>
     <!-- 中部：遍历文章 -->
@@ -21,13 +21,13 @@
       <messageLi v-bind:item="item" />
     </div>
     <!-- 尾部 -->
-    <div class="visit_over">已看完</div>    
+    <div class="visit_over">已看完</div>
   </div>
 </template>
 
 <script>
-import messageLi from "../pages/messageLi.vue"
-import {getMessageList} from "../config/api.js" 
+import messageLi from "./messageLi.vue"
+import {getMessageList} from "../../config/api.js"
 
 export default {
   name: 'message_lock',

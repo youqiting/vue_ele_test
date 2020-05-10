@@ -9,9 +9,9 @@
        <img :src="this.icons.menu"/>
       </router-link>
     </div>-->
-    
+
     <!-- 导航菜单 -->
-    <el-menu 
+    <el-menu
       default-active="2"
       class="el-menu-vertical-demo"  >
       <el-submenu index="1">
@@ -49,13 +49,13 @@
           <i class="el-icon-info"></i>
           <router-link :to="'/about'" class="unline">关于</router-link>
         </template>
-      </el-menu-item> 
+      </el-menu-item>
     </el-menu>
   </div>
 </template>
 
 <script>
-import icons from '../config/icons.json'
+import icons from '../../config/icons.json'
 
 export default {
   name: 'aside_',
@@ -74,12 +74,12 @@ export default {
     /* border: 1px solid green;  */
     height: auto;
     margin: 100px 0px 0 20px;
-} 
+}
 .aside_home{
     color: rgb(63, 207, 243);
     padding: 5px;
     font-size: 18px;
     font-weight: bold;
-    margin-left:45px; 
+    margin-left:45px;
 }
 </style>

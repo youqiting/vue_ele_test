@@ -24,16 +24,16 @@
         <el-footer>
           <Footer />
         </el-footer>
-      </el-container>  
+      </el-container>
     </el-container>
   </div>
 </template>
 
 <script>
 
-import Aside from '../components/aside.vue'
-import Header from '../components/header.vue'
-import Footer from '../components/footer.vue'
+import Aside from '../components/main/aside.vue'
+import Header from '../components/main/header.vue'
+import Footer from '../components/main/footer.vue'
 
 export default {
   name: 'app',
@@ -46,6 +46,13 @@ export default {
     return{
       collapsed:false
     }
+  },
+  mounted() {
+    this.$nextTick(
+            function () {
+              console.log('main.vue')
+            }
+    )
   },
   methods:{
     collapse:function(){

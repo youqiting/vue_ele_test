@@ -3,7 +3,7 @@
         <div class="wrap" id="wrap">
 
             <!-- card负责：展示卡片：  位移+旋转 -->
-            <div class="card card_front"  
+            <div class="card card_front"
                  v-for="(item, index) in bookList" :key="index" :id="'card_'+index"
                   @click="card_choose(index)" >
 
@@ -29,24 +29,24 @@
 </template>
 
 <script>
-import "../css/css3_test.css"
-import bookList from "../config/bookDate.json"
+import "../../css/css3_test.css"
+import bookList from "../../config/bookDate.json"
 
 export default {
     name:'css3_test',
     data(){
         return{
-            testBook_photo:require("../imgs/book_霍比特人3.jpg"),
+            testBook_photo:require("../../imgs/book_霍比特人3.jpg"),
             bookList:bookList,
             book_photo:[
-                {src:require("../imgs/book_变形金刚.jpg")},
-                {src:require("../imgs/book_四月是你的谎言.jpg")},
-                {src:require("../imgs/book_婚纱姑娘.jpg")},
-                {src:require("../imgs/book_小猪猪.jpg")},
-                {src:require("../imgs/book_栀子花开.jpg")},
-                {src:require("../imgs/book_棕色小熊.jpg")},
-                {src:require("../imgs/book_濑户小春.jpg")},
-                {src:require("../imgs/book_霍比特人3.jpg")},
+                {src:require("../../imgs/book_变形金刚.jpg")},
+                {src:require("../../imgs/book_四月是你的谎言.jpg")},
+                {src:require("../../imgs/book_婚纱姑娘.jpg")},
+                {src:require("../../imgs/book_小猪猪.jpg")},
+                {src:require("../../imgs/book_栀子花开.jpg")},
+                {src:require("../../imgs/book_棕色小熊.jpg")},
+                {src:require("../../imgs/book_濑户小春.jpg")},
+                {src:require("../../imgs/book_霍比特人3.jpg")},
             ],
             initial_Index:'',
             chooseIndex:''
@@ -54,7 +54,7 @@ export default {
     },
 
     created:function(){
-        //从data拿图片地址，加入bookList数组中，  
+        //从data拿图片地址，加入bookList数组中，
         //  在json中引入图片需要图片的base64（部分图片太大，base64超出容纳范围），这里直接把图片的经过处理后的<图片地址字符串>地址push到data数据的imgSrc
        this.bookList.forEach((item,index) => {
             item.imgSrc= this.book_photo[index].src;
@@ -93,11 +93,11 @@ export default {
         // 卡片可存放 范围
         spaceRandom:function(card_id){
             var range ={ left :{ x:'', y:'' }, right :{ x:'', y:'' } };
-            var wrap = { 
+            var wrap = {
                 width: document.getElementById('wrap').clientWidth,
                 height: document.getElementById('wrap').clientHeight
                 };
-            var card = { 
+            var card = {
                 width: document.getElementById(card_id).clientWidth,
                 height: document.getElementById(card_id).clientHeight
                 }
@@ -105,7 +105,7 @@ export default {
             range.left.y = [ 0 - card.height/2 , wrap.height - card.height/2];
 
             range.right.x = [ wrap.width/2 + card.width, wrap.width - card.width/2];
-            range.right.y = range.left.y; 
+            range.right.y = range.left.y;
 
             return range;
         },
@@ -113,8 +113,8 @@ export default {
         // 卡片重新洗牌
         card_renew:function(index_){
 
-            //2. 重新安排样式：  
-            //   2.1 数组： <未选中> 卡片Id   
+            //2. 重新安排样式：
+            //   2.1 数组： <未选中> 卡片Id
             //   2.2  去掉<上一张>卡片的center样式, <选中的>卡片给center样式，left、top、transform 设置空
             //   2.3 导航条 去掉<未选中> nav 的 choose 样式， <选中的>给 nav_choose 样式
             var card_otherId =[];
@@ -131,11 +131,11 @@ export default {
                     document.getElementById('card_'+index_).style['transform'] = '';
                     document.getElementById('nav_'+index_).className = document.getElementById('nav_'+index_).className.replace('',' nav_choose ');
                     if(document.getElementById('card_'+index_).className.indexOf("card_center")<0){
-                        document.getElementById('card_'+index_).className = 
+                        document.getElementById('card_'+index_).className =
                         document.getElementById('card_'+index_).className.trim().replace('',' card_center ');
                     }
                     if(document.getElementById('nav_'+index_).className.indexOf("nav_choose")<0){
-                        document.getElementById('nav_'+index_).className = 
+                        document.getElementById('nav_'+index_).className =
                         document.getElementById('nav_'+index_).className.trim().replace('',' nav_choose ');
                     }
                 }
@@ -170,8 +170,8 @@ export default {
             if(this.chooseIndex == index){
                 //正反面切换、翻转
                 if( card_index.className.indexOf('card_back') <0){
-                    card_index.className = card_index.className.replace(/\s*card_front\s*/,' card_back ');   
-                    nav_index.className = nav_index.className.replace('',' nav_back'); 
+                    card_index.className = card_index.className.replace(/\s*card_front\s*/,' card_back ');
+                    nav_index.className = nav_index.className.replace('',' nav_back');
                 }else if(card_index.className.indexOf('card_front') <0){
                     card_index.className = card_index.className.replace(/\s*card_back\s*/,' card_front ');
                     nav_index.className = nav_index.className.replace(' nav_back','');
@@ -179,9 +179,9 @@ export default {
             }
             //  当卡片点击index改变时， (index是当前选中的卡片index,this.chooseIndex值是上一张卡片的index)
             else if( this.chooseIndex != index){
-                // 还原：  1、原 back 面的卡片为 front     
+                // 还原：  1、原 back 面的卡片为 front
                 card_chooseIndex.className = card_chooseIndex.className.replace(/\s*card_back\s*/,' card_front ');
-                
+
                 // 2、 切换卡片时，重新给 <未选中>卡片 排位(旋转角度和位移)
                 this.card_renew(index);
             }
@@ -201,7 +201,7 @@ export default {
                 }
                 // 同时选择卡片
                 this.card_choose(index);
-            } 
+            }
             if(this.chooseIndex != index ){
                 //重新排位
                 this.card_renew(index);

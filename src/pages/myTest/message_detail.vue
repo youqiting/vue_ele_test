@@ -41,9 +41,9 @@
 </template>
 
 <script>
-import {getMessageListById} from '../config/api.js'
-import {updateMessage} from '../config/api.js' 
-import {deleteMessage} from '../config/api.js'
+import {getMessageListById} from '../../config/api.js'
+import {updateMessage} from '../../config/api.js'
+import {deleteMessage} from '../../config/api.js'
 
 export default {
   name:'detail',
@@ -62,7 +62,7 @@ export default {
   mounted:function(){
     this.$nextTick(function(){
       this.getMessageById();
-      
+
     })
   },
   methods:{
@@ -78,7 +78,7 @@ export default {
            if(item.message_open==1) item.message_open=true;
            else if(item.message_open==0) item.message_open=false;
            return item;
-        });     
+        });
       })
     },
 
@@ -132,12 +132,12 @@ export default {
         this.$message({
           type: 'info',
           message: '已取消删除'
-        });          
+        });
       });
     },
-    
+
   }
-  
+
 }
 </script>
 

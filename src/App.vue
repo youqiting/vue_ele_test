@@ -17,6 +17,7 @@ export default {
       },
       this.$nextTick(function(){
         window.onresize;
+        console.log('app.vue')
       })
   },
 }

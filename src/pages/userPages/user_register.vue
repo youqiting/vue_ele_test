@@ -31,8 +31,8 @@
 </template>
 
 <script>
-import {addUser} from '../config/api.js'
-import {selectByName} from '../config/api.js'
+import {addUser} from '../../config/api.js'
+import {selectByName} from '../../config/api.js'
 
 export default {
   name:'user_register',
@@ -71,7 +71,7 @@ export default {
                       name:'home',
                       userName: params.name
                       })
-                    
+
               }
           })
       },
@@ -99,9 +99,9 @@ export default {
             }
         })
       },
-      
+
   }
-  
+
 }
 </script>
 

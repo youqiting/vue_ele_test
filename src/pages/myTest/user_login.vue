@@ -160,7 +160,7 @@ export default {
     position: absolute;
     top: 0;
     background: #fff;
-    background-image: url("../imgs/user_login.jpg");
+    background-image: url("../../imgs/user_login.jpg");
     background-repeat: no-repeat;
     background-size: cover;          /* 拉伸 */
     background-position: bottom;
